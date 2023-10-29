@@ -126,29 +126,95 @@ table {
 }
 
 body {
+}
+
+/*
+Блок Header 1440px
+*/
+
+.container {
+   max-width: 1440px;
+   margin: 0 auto;
+   padding: 0 20px;
+}
+
+.header {
+   position: fixed;
    width: 100%;
-   max-width: 100%;
-   overflow-x: hidden;
-}
-header {
-   position: relative;
+   top: 0;
+   left: 0;
+   z-index: 50;
    background-color: #0c0c0e;
-   display: flex;
+
+   &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #0c0c0e;
+      z-index: 2;
+   }
+
+   &__row {
+      display: flex;
+      justify-content: space-between;
+   }
+
+   &__name {
+      position: relative;
+      right: 2%;
+      width: 294px;
+      color: #fff;
+      font-family: Forum;
+      font-size: 30px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 50px; /* 166.667% */
+      letter-spacing: 0.6px;
+      margin: 20px 0px 20px 20px;
+      position: relative;
+      z-index: 3;
+   }
+
+   &__menu {
+   }
+
+   &__authorization {
+      background-image: url("/dist/img/header/icon_profile.png");
+      height: 28px;
+      width: 28px;
+      margin: 31px 0 0 40px;
+      z-index: 5;
+   }
+
+   &__burger {
+   }
 }
+
 .name {
-   color: #fff;
-   font-family: Forum;
-   font-size: 30px;
-   font-style: normal;
-   font-weight: 400;
-   line-height: 50px; /* 166.667% */
-   letter-spacing: 0.6px;
-   margin: 20px 454px 20px 20px;
+   &__link {
+      text-decoration: none;
+      color: inherit;
+   }
 }
+
 .menu {
-   display: flex;
-   align-self: flex-end;
-   gap: 30px;
+   &__body {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 0 0 0;
+      min-width: 584px;
+   }
+
+   &__list {
+      display: flex;
+      gap: 30px;
+      position: relative;
+      z-index: 2;
+   }
 
    &__link {
       margin: 20px 0;
@@ -162,27 +228,130 @@ header {
    }
 }
 
-   &__authorization {
+/*
+Блок Header от 1024px до 768px
+*/
+
+@media (max-width: 1024px) {
+   .container {
+      max-width: 768px;
+   }
+   body.lock {
+      overflow: hidden;
+   }
+   .header {
+      &__menu {
+         position: fixed;
+         left: 57%;
+         width: 332px;
+         height: 470px;
+         background-color: #0c0c0e;
+         top: -100%;
+         transition: all 0.7s ease 0s;
+      }
+      &__menu.active {
+         top: 0;
+         transition: all 0.5s ease 0s;
+         padding: 100px 0 0 0;
+      }
+      &__authorization {
+         margin: none;
+         position: relative;
+         left: -11%;
+      }
+      &__burger {
+         display: block;
+         position: relative;
+         width: 45px;
+         height: 20px;
+         left: 28%;
+         z-index: 3;
+         & span,
+         &::before,
+         &::after {
+            content: "";
+            background-color: #fff;
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            left: 0;
+            transition: all 0.3s ease 0s;
+         }
+
+         &::before {
+            top: 35px;
+         }
+
+         & span {
+            top: 45px;
+         }
+
+         &::after {
+            bottom: -37px;
+         }
+         &.active::before {
+            transform: rotate(45deg);
+            top: 45px;
+         }
+         &.active span {
+            transform: scale(0);
+         }
+         &.active::after {
+            transform: rotate(-45deg);
+            bottom: -27px;
+         }
+      }
+   }
+   .menu {
+      &__list {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         margin: 0 107px 100px 107px;
+      }
+
+      &__list li {
+      }
+
+      &__link {
+      }
    }
 }
 
+main {
+   width: 100%;
+   margin: 100px 0 0 0;
+}
+
+/*
+Блок Welcome 1440px
+*/
+
+.container__welcome {
+   max-width: 1440px;
+   margin: 0 auto;
+   padding: 0 20px;
+}
+
 .welcome {
+   width: 100%;
+   margin: -20px 0 0 0;
    position: relative;
    height: 600px;
    border: 1px solid #0c0c0e;
-   background-image: url("../img/about/Welcome.png");
+   background-image: url("/dist/img/about/Welcome.png");
    background-repeat: no-repeat;
    background-position: center center;
    background-size: cover;
    &__overlay {
-      position: absolute;
+      position: relative;
       width: 100%;
       height: 300px;
       background: linear-gradient(180deg, #0c0c0e 0%, #0c0c0e 0.01%, rgba(18, 18, 21, 0.1) 100%);
    }
    &__imge-bg {
       position: relative;
-      margin: 220px 840px 460px 0;
+      top: 220px;
       background-color: #0c0c0e;
       display: flex;
       width: 600px;
@@ -222,6 +391,55 @@ header {
    margin: 0 auto;
 }
 
+/*
+Блок Welcome от 1024px до 768px
+*/
+
+@media (max-width: 1024px) {
+   .container {
+      max-width: 768px;
+   }
+
+   .container__welcome {
+      height: 600px;
+      margin: 0 auto;
+      padding: 0 20px;
+   }
+   .welcome {
+      &__imge-bg {
+         right: 20px;
+      }
+   }
+}
+
+/*
+Блок About от 1440px до 1024px
+*/
+
+.title {
+   margin: 20px;
+   text-align: center;
+   color: #0c0c0e;
+   font-family: Forum;
+   font-size: 40px;
+   font-style: normal;
+   font-weight: 400;
+   line-height: 40px; /* 100% */
+   letter-spacing: 2px;
+   text-transform: capitalize;
+}
+.line {
+   border-bottom: 1px solid #000;
+   width: 50px;
+   margin: 0 auto;
+}
+
+.container__about {
+   max-width: 1440px;
+   margin: 0 auto;
+   padding: 0 20px;
+}
+
 .about {
    &__section-title {
    }
@@ -247,8 +465,13 @@ header {
    }
 
    &__imag {
+      width: 30%;
       flex: 1 1 auto;
       margin: 0 20px;
+      &_button-left,
+      &_button-right {
+         display: none;
+      }
    }
 
    &__carousel-pagination {
@@ -263,11 +486,64 @@ header {
       height: 16px;
       width: 16px;
       border-radius: 50%;
+      &_3,
+      &_4 {
+         display: none;
+      }
    }
 
    &__dot-for-carousel_brown {
       background-color: #bb945f;
    }
+}
+
+/*
+Блок About от 1024px 
+*/
+
+@media (max-width: 1024px) {
+   .container {
+      max-width: 768px;
+   }
+
+   .about {
+      &__images-items {
+         margin: 0 70px;
+      }
+      &__imag {
+         margin: 20px 58px;
+         &_1 {
+            width: 40%;
+         }
+         &_button-left,
+         &_button-right {
+            display: block;
+         }
+
+         &_2,
+         &_3 {
+            display: none;
+         }
+      }
+
+      &__dot-for-carousel {
+         &_3,
+         &_4 {
+            display: block;
+         }
+      }
+      &__dot-for-carousel {
+         margin: 25px 5px;
+      }
+   }
+}
+
+/*
+Блок Favorites от 1440px до 1024px
+*/
+
+.container__favotites {
+   width: 100%;
 }
 
 .favorites {
@@ -301,19 +577,19 @@ header {
    &__spring,
    &__winter {
       display: flex;
-      padding: 0 90px 0 0;
+      margin: 0px 90px 0px 0px;
    }
 
    &__favorites-items {
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-evenly;
-      margin: 0 -80px;
+      justify-content: space-around;
+      margin: 0 40px;
    }
 
    &__book {
       position: relative;
-      margin: 0 105px;
+      margin: 0 0;
       &_choice-name {
          margin: 15px 0 0 20px;
          color: #000;
@@ -361,7 +637,7 @@ header {
          border-radius: 2px;
          width: 75px;
          height: 21px;
-         margin: 15px 0px 0px 20px;
+         margin: 15px 0px 15px 20px;
          text-align: center;
          padding: 9px 0 0 0;
          color: #0c0c0e;
@@ -371,13 +647,15 @@ header {
          letter-spacing: 1px;
       }
       &_image-book {
-         position: relative;
-         left: 390px;
-         bottom: 269px;
+         position: absolute;
+         background-size: cover;
+         left: 75%;
+         bottom: -0.5%;
       }
    }
 
    &__bg-description {
+      position: relative;
       margin: 40px 0 0 0px;
       width: 550px;
       max-height: 555px;
@@ -416,10 +694,40 @@ header {
    height: 17px;
 }
 
-.coffeshop {
+@media (max-width: 1350px) {
+   .container {
+   }
+   .favorites {
+      &__favorites-items {
+         flex-wrap: nowrap;
+         flex-direction: column;
+         align-items: center;
+      }
+      &__seasons {
+         display: flex;
+         margin: 0 55px 0 55px;
+         justify-content: space-between;
+      }
+      &__winter,
+      &__spring,
+      &__summer,
+      &__autumn {
+         margin: 0;
+      }
+   }
+}
+
+/*
+Блок Coffeshop от 1440px 
+*/
+
+.container__coffeshop {
    display: flex;
    flex-direction: column;
-   padding: 20px 20px 40px 20px;
+   padding: 20px 20px 0px 20px;
+}
+
+.coffeshop {
    &__text-preset {
       margin: 20px 0;
       color: #000;
@@ -434,8 +742,7 @@ header {
 
    &__menu {
       display: flex;
-      justify-content: space-evenly;
-      margin: 0 -400px;
+      justify-content: space-between;
    }
 
    &__menu-items {
@@ -473,8 +780,41 @@ header {
 .title {
 }
 
+/*
+Блок Coffeshop от 1024px до 768px
+*/
+
+@media (max-width: 1024px) {
+   .container {
+      max-width: 768px;
+   }
+
+   .container__coffeshop {
+      display: flex;
+   }
+
+   .coffeshop {
+      &__menu {
+         flex-direction: column;
+      }
+      &__menu-items {
+         margin: 40px 0;
+         &_desserts {
+            margin-left: auto;
+         }
+      }
+   }
+}
+
+/*
+Блок Contacts от 1440px 
+*/
+
+.container__contacts {
+   padding: 20px 20px 0px 20px;
+}
+
 .contacts {
-   padding: 20px 20px 40px 20px;
    &_title-line {
    }
 
@@ -482,11 +822,10 @@ header {
    }
 
    &__contacts-info {
+      margin: 40px 0;
       display: flex;
       justify-content: space-between;
-      margin: 40px 0px 0px -110px;
       &_text-info {
-         margin: 0px 185px;
       }
 
       &_map {
@@ -558,6 +897,230 @@ header {
       }
    }
 }
+
+@media (max-width: 1300px) {
+   .contacts {
+      &__contacts-info {
+         flex-direction: column;
+         align-items: center;
+         &_map {
+            margin: 100px 0 40px 0;
+         }
+      }
+   }
+}
+
+/*
+Блок Librarycard от 1440px 
+*/
+
+.container__contacts {
+}
+
+.librarycard {
+   padding: 20px;
+   margin: 0 0 21px 0;
+   &__title-line {
+   }
+
+   &__title {
+   }
+
+   &__line {
+   }
+
+   &__activ-block {
+      margin: 40px 0px 0px 0px;
+      display: flex;
+      justify-content: space-between;
+   }
+   &__find-card {
+      &_title {
+         padding: 30px 0;
+         color: #000;
+         font-family: Inter;
+         font-size: 30px;
+         font-style: normal;
+         font-weight: 400;
+         line-height: normal;
+         letter-spacing: 0.6px;
+         text-align: center;
+      }
+
+      &_card-bg {
+         border: 3px solid #bb945f;
+         background: #fff;
+         width: 600px;
+         height: 386px;
+         box-shadow: 0em 5px 0.2em rgba(18, 18, 21, 0.3);
+      }
+
+      &_gold-bg {
+         display: flex;
+         flex-direction: column;
+         width: 560px;
+         height: 272px;
+         background: #bb945f;
+         align-items: center;
+         margin: 20px;
+      }
+   }
+
+   &__Get-reader-card {
+      margin: 40px 0;
+      &_title {
+         color: #000;
+         text-align: right;
+         font-family: Forum;
+         font-size: 30px;
+         font-style: normal;
+         font-weight: 400;
+         line-height: normal;
+         letter-spacing: 0.6px;
+      }
+
+      &_text {
+         color: #000;
+         text-align: right;
+         font-family: Inter;
+         font-size: 20px;
+         font-style: normal;
+         font-weight: 400;
+         line-height: 40px; /* 200% */
+         letter-spacing: 0.4px;
+      }
+
+      &_sign-up {
+         background-color: #fff;
+         margin: 35px 40px 0 286px;
+         width: 75px;
+         height: 30px;
+         padding: 10px 0px;
+         align-items: center;
+         flex-shrink: 0;
+         color: #0c0c0e;
+         text-align: center;
+         font-family: Inter;
+         font-size: 10px;
+         font-style: normal;
+         font-weight: 700;
+         line-height: normal;
+         letter-spacing: 1px;
+      }
+
+      &_login-up {
+         background-color: #fff;
+         width: 75px;
+         height: 30px;
+         padding: 10px 0px;
+         align-items: center;
+         flex-shrink: 0;
+         color: #0c0c0e;
+         text-align: center;
+         font-family: Inter;
+         font-size: 10px;
+         font-style: normal;
+         font-weight: 700;
+         line-height: normal;
+         letter-spacing: 1px;
+      }
+   }
+}
+
+.find-card {
+   &_title {
+      color: #000;
+      font-family: Forum;
+      font-size: 30px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 50px; /* 166.667% */
+      letter-spacing: 0.6px;
+      margin: 20px 0 0 -230px;
+   }
+
+   &_name {
+      margin: 20px 0px 0px 0px;
+      color: #8e8e8e;
+      font-family: Forum;
+      font-size: 30px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 50px; /* 166.667% */
+      letter-spacing: 0.6px;
+      border: #bb945f;
+      width: 520px;
+      height: 66px;
+      border-radius: 10px;
+      background: #fff;
+   }
+
+   &_number {
+      color: #8e8e8e;
+      font-family: Forum;
+      font-size: 30px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 50px; /* 166.667% */
+      letter-spacing: 0.6px;
+      margin: 25px 0;
+      border: #bb945f;
+      width: 520px;
+      height: 66px;
+      border-radius: 10px;
+      background: #fff;
+   }
+   &_button {
+      background-color: #fff;
+      margin: 0px 179px 30px 179px;
+      display: inline-flex;
+      padding: 10px 40px;
+      align-items: flex-end;
+      color: #0c0c0e;
+      text-align: center;
+      font-family: Inter;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      letter-spacing: 1px;
+   }
+}
+
+@media (max-width: 1300px) {
+   .librarycard {
+      &__activ-block {
+         flex-direction: column;
+         align-items: center;
+      }
+      &__Get-reader-card {
+         margin: 40px 0;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         &_title {
+            text-align: center;
+            margin: 0 0 40px 0;
+         }
+         &_text {
+            text-align: center;
+         }
+         &_sign-up {
+            margin: 0 20px 0 0;
+         }
+         &_login-up {
+         }
+         &_buttons {
+            align-items: center;
+            margin: 40px 0;
+         }
+      }
+   }
+}
+
+/*
+Блок Footer от 1440px 
+*/
 
 footer {
    background: #0c0c0e;
@@ -638,167 +1201,5 @@ footer {
       font-weight: 400;
       line-height: 40px; /* 200% */
       letter-spacing: 2px;
-   }
-}
-
-.librarycard {
-   padding: 20px;
-   margin: 0 0 21px 0;
-   &__title-line {
-   }
-
-   &__title {
-   }
-
-   &__line {
-   }
-
-   &__activ-block {
-      display: flex;
-      justify-content: space-between;
-   }
-   &__find-card {
-      &_title {
-         padding: 30px 158px;
-         color: #000;
-         font-family: Inter;
-         font-size: 30px;
-         font-style: normal;
-         font-weight: 400;
-         line-height: normal;
-         letter-spacing: 0.6px;
-         align-items: center;
-      }
-
-      &_card-bg {
-         border: 3px solid #bb945f;
-         background: #fff;
-      }
-
-      &_gold-bg {
-         width: 560px;
-         background: #bb945f;
-         margin: 20px;
-         padding: 25px 0px 0px 25px;
-      }
-   }
-
-   &__Get-reader-card {
-      margin: 40px 0;
-      &_title {
-         color: #000;
-         text-align: right;
-         font-family: Forum;
-         font-size: 30px;
-         font-style: normal;
-         font-weight: 400;
-         line-height: normal;
-         letter-spacing: 0.6px;
-      }
-
-      &_text {
-         color: #000;
-         text-align: right;
-         font-family: Inter;
-         font-size: 20px;
-         font-style: normal;
-         font-weight: 400;
-         line-height: 40px; /* 200% */
-         letter-spacing: 0.4px;
-      }
-
-      &_sign-up {
-         background-color: #fff;
-         margin: 35px 40px 0 286px;
-         width: 75px;
-         height: 30px;
-         padding: 10px 0px;
-         align-items: center;
-         flex-shrink: 0;
-         color: #0c0c0e;
-         text-align: center;
-         font-family: Inter;
-         font-size: 10px;
-         font-style: normal;
-         font-weight: 700;
-         line-height: normal;
-         letter-spacing: 1px;
-      }
-
-      &_login-up {
-         background-color: #fff;
-         width: 75px;
-         height: 30px;
-         padding: 10px 0px;
-         align-items: center;
-         flex-shrink: 0;
-         color: #0c0c0e;
-         text-align: center;
-         font-family: Inter;
-         font-size: 10px;
-         font-style: normal;
-         font-weight: 700;
-         line-height: normal;
-         letter-spacing: 1px;
-      }
-   }
-}
-
-.find-card {
-   &_title {
-      color: #000;
-      font-family: Forum;
-      font-size: 30px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 50px; /* 166.667% */
-      letter-spacing: 0.6px;
-   }
-
-   &_name {
-      margin: 20px 0px 0px 0px;
-      color: #8e8e8e;
-      font-family: Forum;
-      font-size: 30px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 50px; /* 166.667% */
-      letter-spacing: 0.6px;
-      border: #bb945f;
-      width: 520px;
-      height: 66px;
-      border-radius: 10px;
-      background: #fff;
-   }
-
-   &_number {
-      color: #8e8e8e;
-      font-family: Forum;
-      font-size: 30px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 50px; /* 166.667% */
-      letter-spacing: 0.6px;
-      margin: 25px 0;
-      border: #bb945f;
-      width: 520px;
-      height: 66px;
-      border-radius: 10px;
-      background: #fff;
-   }
-   &_button {
-      background-color: #fff;
-      margin: 30px 179px;
-      display: inline-flex;
-      padding: 10px 40px;
-      align-items: flex-end;
-      color: #0c0c0e;
-      text-align: center;
-      font-family: Inter;
-      font-size: 20px;
-      font-style: normal;
-      font-weight: 700;
-      line-height: normal;
-      letter-spacing: 1px;
    }
 }
