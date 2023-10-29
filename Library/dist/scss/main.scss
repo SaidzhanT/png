@@ -161,10 +161,6 @@ header {
       text-decoration: none;
    }
 }
-.logo {
-   height: 28px;
-   flex-shrink: 0;
-   margin: 31px 0px 31px 40px;
 
    &__authorization {
    }
@@ -191,7 +187,6 @@ header {
       display: flex;
       width: 600px;
       height: 220px;
-      padding: 35px 40px;
       justify-content: center;
       align-items: center;
    }
